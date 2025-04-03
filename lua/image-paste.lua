@@ -94,7 +94,8 @@ function M.paste_image()
 
       -- Create the HTML replacement string
       if not failed then
-        if is_hdpi and width ~= nil then
+        local filetype = vim.bo.filetype
+        if filetype == "html" then
           replacement = string.format(template_html, options.image_name, width, url)
         else
           replacement = string.format(template_md, options.image_name, url)
